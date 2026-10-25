@@ -12,11 +12,11 @@ Assignment Overview
 Repository Structure
         theory: Written answers to Questions 1 and 2.
         practical:  Practical implementation and commands.
-        screenshots:  Screenshots demonstrating project execution and Git/GitHub workflow.
-        app.js: A simple Node.js application.
-        package.json: Project configuration.
-        package-lock.json: Records the exact dependency tree when dependencies are installed.
-        .gitignore: Excludes files and folders that should not be tracked by Git.
+screenshots:  Screenshots demonstrating project execution and Git/GitHub workflow.
+app.js: A simple Node.js application.
+package.json: Project configuration.
+package-lock.json: Records the exact dependency tree when dependencies are installed.
+.gitignore: Excludes files and folders that should not be tracked by Git.
 Technologies Used
   1.Visual Studio Code
   2.Node.js
