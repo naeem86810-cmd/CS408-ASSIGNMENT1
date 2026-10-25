@@ -4,78 +4,109 @@
 
 ### 1. What Is Git?
 
-Git is a distributed version control system used to track changes in source code and other project files. It allows developers to maintain different versions of a project and return to earlier versions when necessary.
+**Definition:**
+Git is a distributed version control system used to track changes in source code and other project files.
+
+It allows developers to maintain project history, create branches, and return to earlier versions when necessary.
 
 **Advantages of Git:**
 
-* Tracks changes made to files.
-* Maintains project history.
-* Allows developers to create branches.
-* Helps identify and resolve conflicts.
-* Supports collaboration among team members.
+* **Tracks Changes:** Records changes made to project files.
+* **Maintains History:** Allows developers to review previous commits.
+* **Supports Branching:** Allows developers to work on different features separately.
+* **Helps Resolve Conflicts:** Provides tools to identify and resolve conflicting changes.
+* **Supports Collaboration:** Allows multiple developers to work on the same project.
+
+**Example:**
+A developer can use Git to track changes made to a JavaScript file and restore an earlier version if necessary.
 
 ### 2. What Is GitHub?
 
-GitHub is an online platform that hosts Git repositories. It allows developers to store projects online, share their work, review changes, and collaborate with other developers.
+**Definition:**
+GitHub is an online platform that hosts Git repositories and provides tools for collaboration.
+
+**Main Features:**
+
+* Stores repositories online.
+* Allows developers to share their projects.
+* Supports code reviews and pull requests.
+* Helps teams collaborate on software projects.
+* Provides access to project history and documentation.
+
+**Justification:**
+GitHub allows developers to store their work online and share it with teachers, teammates, and other developers.
 
 ### 3. Difference Between Git and GitHub
 
-| Git                                                 | GitHub                                                 |
-| --------------------------------------------------- | ------------------------------------------------------ |
-| Git is a version control system.                    | GitHub is an online repository hosting platform.       |
-| It can work locally on a computer.                  | It provides online hosting and collaboration features. |
-| It tracks changes in files.                         | It hosts repositories and supports collaboration.      |
-| It is operated through commands or graphical tools. | It can be used through a website and other tools.      |
+| Git                                                      | GitHub                                                 |
+| -------------------------------------------------------- | ------------------------------------------------------ |
+| Git is a version control system.                         | GitHub is an online repository hosting platform.       |
+| It can work locally on a computer.                       | It provides online hosting and collaboration features. |
+| It tracks changes in files.                              | It hosts repositories and supports collaboration.      |
+| It is commonly used through commands or graphical tools. | It can be accessed through a website and other tools.  |
+| Example: `git commit`                                    | Example: Creating a repository on GitHub.              |
 
 ### 4. Important Git Commands
 
-**Initialize a repository:**
+Git commands help developers manage project files and maintain version history.
+
+#### Command 1: Initialize a Repository
 
 ```bash
 git init
 ```
 
-This command initializes a Git repository in the current directory.
+**Purpose:** Initializes a new Git repository in the current directory.
 
-**Check repository status:**
+**Note:** If the project is already a Git repository, this command is usually unnecessary.
+
+#### Command 2: Check Repository Status
 
 ```bash
 git status
 ```
 
-This command displays modified, staged, and untracked files.
+**Purpose:** Displays the current repository status, including modified, staged, and untracked files.
 
-**Stage changes:**
+#### Command 3: Stage Changes
 
 ```bash
 git add .
 ```
 
-This command stages changes in the current directory and its subdirectories, subject to Git's ignore rules.
+**Purpose:** Stages changes in the current directory and its subdirectories, subject to Git's ignore rules.
 
-**Create a commit:**
+Staging prepares the selected changes for the next commit.
+
+#### Command 4: Create a Commit
 
 ```bash
 git commit -m "Initial commit"
 ```
 
-A commit records the staged changes in the repository history.
+**Purpose:** Records staged changes in the local repository history.
 
-**View commit history:**
+The message describes the changes included in the commit.
+
+#### Command 5: View Commit History
 
 ```bash
 git log --oneline
 ```
 
-This command displays a concise history of commits.
+**Purpose:** Displays a concise list of previous commits.
 
-**Push changes to GitHub:**
+It helps developers review the project's history.
+
+#### Command 6: Push Changes to GitHub
 
 ```bash
 git push
 ```
 
-This command sends local commits to the configured remote repository when the branch and remote are properly configured.
+**Purpose:** Sends local commits to the configured remote repository.
+
+The branch and remote must be configured correctly, and the user must have permission to push.
 
 ---
 
@@ -83,6 +114,7 @@ This command sends local commits to the configured remote repository when the br
 
 ### 1. What Is .gitignore?
 
+**Definition:**
 The `.gitignore` file specifies files and directories that Git should ignore when identifying untracked files.
 
 It helps prevent unnecessary files, generated files, and sensitive local configuration files from being added to a repository.
@@ -96,35 +128,54 @@ node_modules/
 
 **Explanation:**
 
-* `node_modules/` excludes the directory containing installed npm packages.
-* `.env` excludes a local environment configuration file that may contain sensitive values.
+* `node_modules/` — Excludes the directory containing installed npm packages.
+* `.env` — Excludes a local environment configuration file that may contain sensitive information.
+
+**Important:**
+The `.gitignore` file should be created in the project's root directory.
 
 ### 3. Why Is .gitignore Important?
 
-The `.gitignore` file helps to:
+The `.gitignore` file helps developers:
 
 1. Keep the repository organized.
 2. Avoid uploading unnecessary generated files.
 3. Reduce repository size.
 4. Prevent accidental exposure of local configuration files.
+5. Avoid tracking files that can be generated again.
 
-**Important:** Adding a file to `.gitignore` does not automatically remove it if Git is already tracking it. Sensitive information should never be committed to a public repository.
+**Important Note:**
+Adding a file to `.gitignore` does not automatically stop Git from tracking it if it has already been committed. Sensitive information should never be committed to a public repository.
 
 ---
 
 ## (c) Steps for Uploading a Project to GitHub
 
-The following steps explain how to upload a local project to a GitHub repository.
+The following steps explain how to upload a local project to GitHub.
 
 ### Step 1: Create a GitHub Repository
 
-Create a repository on GitHub and note its remote URL.
+Open GitHub and create a new repository.
 
-If a repository already exists, use that repository instead of creating another one.
+Give the repository an appropriate name, such as:
+
+```text
+CS408-ASSIGNMENT1
+```
+
+Copy the repository URL.
+
+**Note:** If a repository already exists for the assignment, use that repository instead of creating another one.
 
 ### Step 2: Open the Project Folder
 
-Open the project folder in Visual Studio Code and open its integrated terminal.
+Open the project folder in Visual Studio Code.
+
+Select:
+
+**Terminal → New Terminal**
+
+Make sure the terminal is open in the correct project directory.
 
 ### Step 3: Initialize Git
 
@@ -134,25 +185,35 @@ If the folder is not already a Git repository, run:
 git init
 ```
 
-If Git is already initialized, there is no need to run this command again.
+This command initializes Git in the current directory.
+
+If Git has already been initialized, there is no need to run this command again.
 
 ### Step 4: Check the Repository Status
+
+Run:
 
 ```bash
 git status
 ```
 
-This command shows which files Git recognizes as modified, staged, or untracked.
+This command displays the files Git recognizes as modified, staged, or untracked.
+
+It helps developers identify which changes need to be committed.
 
 ### Step 5: Stage Project Files
+
+Run:
 
 ```bash
 git add .
 ```
 
-This command stages the project files that are not excluded by Git's ignore rules.
+This command stages the project changes that are not excluded by Git's ignore rules.
 
 ### Step 6: Commit the Changes
+
+Run:
 
 ```bash
 git commit -m "Add assignment files"
@@ -160,23 +221,25 @@ git commit -m "Add assignment files"
 
 This command records the staged changes in the local Git history.
 
-### Step 7: Connect the GitHub Repository
+A meaningful commit message describes the changes being saved.
 
-If a remote has not already been configured, use:
+### Step 7: Connect to the GitHub Repository
+
+If a remote repository has not been configured, run:
 
 ```bash
 git remote add origin YOUR_REPOSITORY_URL
 ```
 
-Replace `YOUR_REPOSITORY_URL` with the actual URL of your GitHub repository.
+Replace `YOUR_REPOSITORY_URL` with the actual URL of the GitHub repository.
 
-If the remote already exists, inspect it with:
+If the remote is already configured, check it using:
 
 ```bash
 git remote -v
 ```
 
-Do not add the same remote again unnecessarily.
+**Important:** Do not add the same remote again unnecessarily.
 
 ### Step 8: Push the Changes
 
@@ -186,17 +249,32 @@ Check the current branch:
 git branch --show-current
 ```
 
-If your branch is named `main`, you can push it using:
+If the branch is named `main`, use:
 
 ```bash
 git push -u origin main
 ```
 
-Use the actual branch name if it is different.
+This command uploads the local commits to the remote `main` branch and sets up upstream tracking.
+
+If the branch has a different name, use the actual branch name.
 
 ### Step 9: Verify the Upload
 
-Open your GitHub repository in a web browser and check that the required project files and folders are visible.
+Open the repository on GitHub.
+
+Check that the required files and folders are visible.
+
+For example:
+
+* `README.md`
+* `theory/`
+* `practical/`
+* `app.js`
+* `package.json`
+
+**Conclusion:**
+After verifying the upload, the repository link can be shared with the instructor.
 
 ---
 
@@ -204,109 +282,139 @@ Open your GitHub repository in a web browser and check that the required project
 
 ### 1. Rejected Push
 
+**Problem:**
 A push may be rejected when the remote repository contains commits that are missing from the local branch.
 
-**Possible solution:**
-
-First, inspect the current status:
+**Step 1:** Check the current repository status.
 
 ```bash
 git status
 ```
 
-Check the configured remote:
+**Step 2:** Check the remote repository.
 
 ```bash
 git remote -v
 ```
 
-If the remote contains changes that need to be preserved, integrate them carefully before pushing.
+**Step 3:** If the remote branch contains changes that need to be preserved, integrate them before pushing.
 
-For example, if the remote branch is `main`:
+For example, if the remote branch is named `main`, run:
 
 ```bash
 git pull --rebase origin main
 ```
 
-After resolving any conflicts and completing the rebase, push again:
+If conflicts occur, resolve them before continuing the rebase.
+
+**Step 4:** Push the changes.
 
 ```bash
 git push
 ```
 
-The exact solution depends on the error message and the repository's history.
-
-**Important:** Do not use `git push --force` as a first solution because it can overwrite remote history.
+**Important:** The correct solution depends on the error message and repository history. Avoid using `git push --force` as a first solution because it can overwrite remote history.
 
 ### 2. Merge Conflicts
 
-A merge conflict occurs when Git cannot automatically combine changes to the same part of a file.
+**Definition:**
+A merge conflict occurs when Git cannot automatically combine different changes to the same part of a file.
 
-**Steps to resolve a conflict:**
+**Common Causes:**
 
-1. Run the relevant Git command and identify the conflicted files.
+* Two developers edit the same lines.
+* Local and remote changes cannot be combined automatically.
+* Different branches contain conflicting modifications.
+
+**Steps to Resolve a Conflict:**
+
+1. Identify the conflicted files using Git's output or `git status`.
 2. Open each conflicted file in VS Code.
-3. Find the conflict markers.
+3. Locate the conflict markers.
 4. Decide which changes to keep or combine.
 5. Remove the conflict markers.
 6. Save the corrected file.
-7. Stage the resolved file.
+7. Stage the resolved files.
 
-For a merge, continue with:
+For a merge operation, finish with:
 
 ```bash
 git add .
 git commit -m "Resolve merge conflicts"
 ```
 
-For a rebase, use the appropriate continuation command:
+For a rebase operation, continue with:
 
 ```bash
+git add .
 git rebase --continue
 ```
 
-The continuation command depends on whether the operation was a merge or a rebase.
+**Note:** The correct continuation command depends on whether Git is performing a merge or a rebase.
 
 ### 3. Authentication Problems
 
-GitHub may require authentication when pushing changes.
+**Problem:**
+GitHub may reject a push if authentication fails or the user does not have permission to access the repository.
 
-**Possible solutions:**
+**Possible Solutions:**
 
 * Follow the authentication instructions provided by Git or VS Code.
-* Confirm that you have permission to access the repository.
-* Check that the remote URL points to the correct repository.
+* Confirm that the repository belongs to the correct account or organization.
+* Check that the remote URL is correct.
+* Verify that you have permission to push changes.
 * Use an authentication method supported by GitHub.
 
-Never publish passwords, personal access tokens, or private keys in your repository.
+**Security Tip:**
+Never publish passwords, personal access tokens, or private keys in a public repository.
 
 ### 4. Files Are Missing from GitHub
 
-If files are not visible on GitHub, check the repository status:
+**Problem:**
+Some files may not appear on GitHub after uploading a project.
+
+**Possible Causes:**
+
+* The files have not been staged.
+* The changes have not been committed.
+* The latest commit has not been pushed.
+* The files are excluded by `.gitignore`.
+* The files are on a different branch.
+
+**Solution:**
+
+First, check the repository status:
 
 ```bash
 git status
 ```
 
-Stage and commit the required changes:
+Stage the required changes:
 
 ```bash
 git add .
+```
+
+Create a commit:
+
+```bash
 git commit -m "Add missing assignment files"
 ```
 
-Then push:
+Push the changes:
 
 ```bash
 git push
 ```
 
-Also check whether the missing files are excluded by `.gitignore`.
+If the files are still missing, check `.gitignore` and confirm that you are viewing the correct repository and branch.
 
 ---
 
-## Conclusion
+## Overall Conclusion
 
-Git and GitHub are important tools in modern software development. Git tracks changes and maintains project history, while GitHub provides online hosting and collaboration features.
+Git and GitHub are important tools in modern software development.
 
-By using Git commands correctly, maintaining a suitable `.gitignore` file, and understanding how to resolve common errors, developers can organize their projects and collaborate more effectively.
+Git tracks changes, maintains project history, and supports branching. GitHub hosts repositories online and provides features for sharing and collaboration.
+
+The `.gitignore` file helps prevent unnecessary files from being tracked. By understanding Git commands and learning how to troubleshoot common problems, developers can manage projects more effectively and collaborate with other team members.
