@@ -6,8 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naeem86810-cmd/CS408-ASSIGNMENT1.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/naeem86810-cmd/CS408-ASSIGNMENT1/issues"
+  },
+  "homepage": "https://github.com/naeem86810-cmd/CS408-ASSIGNMENT1#readme"
 }
