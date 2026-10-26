@@ -1,598 +1,524 @@
-# CS408 — Advanced Web Development
+# CS-408: Advanced Web Development
 
-## Assignment 1: Development Tools, Git, GitHub, and Node.js
+## Assignment 1 — Development Environment and Git/GitHub Workflow
 
 ---
 
 ## Student Information
 
-| Field           | Details                                                   |
-| --------------- | --------------------------------------------------------- |
-| Course Code     | CS408                                                     |
-| Course Title    | Advanced Web Development                                  |
-| Assignment      | Assignment 1                                              |
-| Submitted To    | Mam Tasmiya                                               |
-| Student Names   | Tehreem Fayaz (016), Gule Sandal (017), Saira Akram (018) |
-| Submission Date | 25 October 2026                                           |
+| Field             | Details                                                   |
+| ----------------- | --------------------------------------------------------- |
+| Course Code       | CS-408                                                    |
+| Course Title      | Advanced Web Development                                  |
+| Assignment Number | 1                                                         |
+| Submitted To      | Mam Tasmiya                                               |
+| Student Names     | Tehreem Fayaz (016), Gule Sandal (017), Saira Akram (018) |
+| Submission Date   | 25 October 2026                                           |
 
 ---
 
 # Table of Contents
 
-1. [Introduction](#1-introduction)
-2. [Objectives](#2-objectives)
-3. [Question 1: Development Tools and Node.js](#3-question-1-development-tools-and-nodejs)
-4. [Question 2: Git and GitHub](#4-question-2-git-and-github)
-5. [Practical Work](#5-practical-work)
-6. [Project Setup and Execution](#6-project-setup-and-execution)
-7. [Git Workflow](#7-git-workflow)
-8. [Common Git Problems and Solutions](#8-common-git-problems-and-solutions)
-9. [Conclusion](#9-conclusion)
+* [Introduction](#introduction)
+* [Question 1: Development Environment](#question-1-design-set-up-and-justify-a-development-environment)
+
+  * [1(a) Essential Development Tools](#1a-select-and-justify-the-essential-development-tools)
+  * [1(b) Package Management](#1b-packagejson-dependencies-and-lockfile)
+  * [1(c) Node.js Project Setup](#1c-create-and-run-a-basic-nodejs-project)
+  * [1(d) Browser Troubleshooting](#1d-troubleshooting-incorrect-output-and-failed-image-requests)
+* [Question 2: Git/GitHub Workflow](#question-2-gitgithub-workflow-and-troubleshooting)
+
+  * [2(a) Commands and Remote Setup](#2a-check-stage-commit-connect-and-push)
+  * [2(b) node_modules and .gitignore](#2b-excluding-node_modules-and-managing-dependencies)
+  * [2(c) Git Concepts and Collaboration](#2c-commit-branch-push-pull-and-clone)
+  * [2(d) Troubleshooting a Rejected Push](#2d-safely-troubleshooting-a-rejected-push)
+* [Practical Implementation](#practical-implementation)
+* [Project Structure](#project-structure)
+* [Screenshots Required](#screenshots-required)
+* [Conclusion](#conclusion)
 
 ---
 
-# 1. Introduction
+# Introduction
 
-Advanced Web Development involves creating, testing, managing, and deploying web applications. Developers use different tools and technologies to make the development process easier and more efficient.
+Modern web development requires a consistent development environment, effective debugging tools, reliable package management, and a safe version-control workflow. When several team members use different computers, differences in installed packages, formatting rules, and development tools can create problems.
 
-This assignment introduces important web development tools, Node.js, npm, Git, and GitHub. It also demonstrates practical commands used to create a Node.js project, manage project files, track changes, and upload work to a GitHub repository.
+This assignment presents a practical plan for setting up a JavaScript development environment and managing a Node.js project using Git and GitHub. It explains the purpose of essential development tools, package management, browser debugging, Git commands, repository collaboration, and safe troubleshooting.
 
-The assignment combines theoretical concepts and practical implementation in one GitHub repository.
+The recommended approach is to use consistent project configuration, record dependency versions, exclude unnecessary generated files, and maintain a clear history of changes. These decisions help team members reproduce the project environment and collaborate with less risk.
 
-# 2. Objectives
+# Question 1: Design, Set Up, and Justify a Development Environment
 
-The main objectives of this assignment are:
+## 1(a) Select and Justify the Essential Development Tools
 
-* To understand commonly used web development tools.
-* To understand Node.js and npm.
-* To learn the purpose of `package.json` and `package-lock.json`.
-* To understand browser Developer Tools.
-* To learn Git version control.
-* To understand the difference between Git and GitHub.
-* To create and manage a project repository.
-* To practice essential Git commands.
-* To upload and maintain project files on GitHub.
-* To organize theory and practical work in a single repository.
+A student team needs tools for writing code, running JavaScript, maintaining consistent formatting, managing packages, and identifying browser errors. The following tools address these requirements.
 
-# 3. Question 1: Development Tools and Node.js
+### 1. Visual Studio Code
 
-## 3.1 What Are Web Development Tools?
+Visual Studio Code (VS Code) is a source-code editor used to create and maintain project files.
 
-Web development tools are software applications and utilities that help developers write, test, debug, and manage websites and web applications.
+**Purpose:**
 
-These tools make development easier by providing features such as code editing, error detection, debugging, package management, and version control.
+* Write and edit JavaScript, HTML, CSS, and configuration files.
+* Organize files into folders.
+* Use an integrated terminal to run commands.
+* Inspect Git changes and manage source code.
+* Debug supported applications using extensions and built-in features.
 
-### Common Web Development Tools
+**Justification:**
 
-**1. Visual Studio Code**
+VS Code is suitable for a student team because it is lightweight, supports JavaScript development, and provides an integrated terminal. Team members can use the same editor settings and recommended extensions to reduce differences in their development environments.
 
-Visual Studio Code (VS Code) is a source-code editor used to write and manage code. It supports many programming languages, including HTML, CSS, JavaScript, and TypeScript.
+### 2. VS Code Extensions
 
-Important features include:
+Extensions add features to VS Code. The team should choose a small, consistent set of extensions rather than installing unnecessary tools.
 
-* Syntax highlighting
-* Code completion
-* Integrated terminal
-* Extensions
-* Debugging support
-* Git integration
+| Extension or Tool                                            | Purpose                                                              | Reason for Selection                                 |
+| ------------------------------------------------------------ | -------------------------------------------------------------------- | ---------------------------------------------------- |
+| ESLint                                                       | Identifies JavaScript problems and applies configured linting rules. | Helps detect common coding mistakes.                 |
+| Prettier                                                     | Formats code consistently.                                           | Reduces formatting differences between team members. |
+| JavaScript debugger or built-in JavaScript debugging support | Helps inspect execution and debug supported applications.            | Makes errors easier to investigate.                  |
+| React Developer Tools browser extension                      | Inspects React components and their props and state.                 | Useful if the application uses React.                |
 
-**2. Web Browsers**
+The team should share relevant configuration files, such as ESLint and Prettier configuration, through Git. This is more reliable than asking each member to select formatting rules independently.
 
-Browsers such as Google Chrome, Microsoft Edge, and Mozilla Firefox are used to open and test websites.
+**Important distinction:** ESLint checks code against configured rules, while Prettier focuses primarily on code formatting. They serve related but different purposes.
 
-They also provide Developer Tools for inspecting HTML, CSS, JavaScript, and network requests.
+### 3. Node.js
 
-**3. Node.js**
+Node.js is a JavaScript runtime environment that allows JavaScript to execute outside a web browser.
 
-Node.js is a JavaScript runtime environment that allows JavaScript code to run outside a web browser. It is commonly used for backend development and server-side applications.
+**Purpose:**
 
-**4. npm**
+* Run JavaScript files from the terminal.
+* Build backend applications and web servers.
+* Develop APIs.
+* Execute project scripts.
+* Support JavaScript development tools.
 
-npm stands for Node Package Manager. It helps developers install, update, and manage JavaScript packages and project dependencies.
+**Justification:**
 
-**5. Git**
+Node.js allows all team members to execute the same project using a JavaScript runtime. The team should agree on a supported Node.js version and document it so that differences between installed versions are less likely to cause problems.
 
-Git is a distributed version control system used to track changes in source code. It allows developers to maintain project history and work on different versions of a project.
-
-**6. GitHub**
-
-GitHub is an online platform for hosting Git repositories. It enables developers to share code, collaborate, review changes, and manage projects.
-
-## 3.2 What Is Node.js?
-
-Node.js is an open-source, cross-platform JavaScript runtime environment. It uses the V8 JavaScript engine to execute JavaScript outside the browser.
-
-Traditionally, JavaScript was mainly used in web browsers to make web pages interactive. Node.js allows developers to use JavaScript for server-side programming as well.
-
-### Uses of Node.js
-
-* Building web servers
-* Developing REST APIs
-* Creating backend applications
-* Reading and writing files
-* Connecting applications to databases
-* Building real-time applications
-* Developing command-line tools
-
-### Advantages of Node.js
-
-* It allows JavaScript to run outside the browser.
-* It supports asynchronous, non-blocking input/output.
-* It has a large package ecosystem.
-* It can be used for both frontend and backend development.
-* It works on Windows, macOS, and Linux.
-
-### Checking Node.js and npm Versions
-
-Run these commands in the VS Code terminal:
+Check the installed version with:
 
 ```bash
 node --version
+```
+
+### 4. Package Manager: npm
+
+npm stands for Node Package Manager. It is commonly installed with Node.js and manages packages required by JavaScript projects.
+
+**Purpose:**
+
+* Install project dependencies.
+* Remove or update packages.
+* Manage dependency versions through project files.
+* Run commands defined in `package.json`.
+
+**Justification:**
+
+Using npm provides a consistent way to install dependencies instead of asking each team member to download and configure packages manually. A shared `package.json` and lockfile help team members install the intended dependency versions.
+
+Check the installed npm version:
+
+```bash
 npm --version
 ```
 
-If both commands display version numbers, Node.js and npm are available in the terminal.
+### 5. Browser Developer Tools
 
-## 3.3 What Is npm?
+Browser Developer Tools are built-in browser utilities available in browsers such as Google Chrome and Microsoft Edge.
 
-npm stands for Node Package Manager. It is used to install and manage packages required by a JavaScript project.
+Open them by pressing `F12` or right-clicking a webpage and selecting **Inspect**.
 
-A package is reusable code that provides particular functionality.
+Their main panels include:
 
-For example, a developer can install a package for handling HTTP requests, validating data, or creating a web server.
+* **Elements:** Inspects HTML and CSS.
+* **Console:** Displays JavaScript errors, warnings, and messages.
+* **Network:** Shows network requests and their responses.
+* **Sources:** Helps inspect source files and debug JavaScript.
+* **Application:** Inspects browser storage, cookies, and related application data.
+* **Performance:** Helps investigate performance problems.
 
-### Important npm Commands
+**Justification:**
 
-```bash
-npm init -y
-```
+A website can load successfully while still displaying incorrect information or failing to load certain resources. Developer Tools help identify whether a problem originates from JavaScript, HTML/CSS, a network request, or another browser-related issue.
 
-Creates a default `package.json` file.
+### 6. React Developer Tools
 
-```bash
-npm install
-```
+React Developer Tools is a browser extension used to inspect applications built with React.
 
-Installs the dependencies specified in the project configuration when the required package information is available.
+It provides a component-inspection interface and can show component hierarchy, props, and state. Its available features depend on the React application and the installed version of the extension.
 
-```bash
-npm install express
-```
+**Justification:**
 
-Installs Express as a project dependency.
+If the team develops a React application, this extension helps trace which component is responsible for incorrect output. For example, if a component displays the wrong text, the developer can inspect its props and state to determine whether the incorrect value is being passed to it.
 
-```bash
-npm install --save-dev nodemon
-```
+**Important:** React Developer Tools is optional for a plain JavaScript application. It is useful when React is actually part of the project, rather than being a requirement for every website.
 
-Installs Nodemon as a development dependency.
+### Recommended Team Setup
 
-```bash
-npm uninstall express
-```
+To make the environment more consistent, the team should:
 
-Removes Express from the project dependencies.
+1. Agree on a supported Node.js version.
+2. Use the same package manager.
+3. Share project configuration files through Git.
+4. Configure a common code formatter and linter.
+5. Keep dependency information in `package.json` and the lockfile.
+6. Use browser Developer Tools for debugging.
+7. Install React Developer Tools only if the application uses React.
 
-## 3.4 What Is package.json?
+This approach reduces differences between computers and makes problems easier to reproduce.
 
-`package.json` is an important configuration file in a Node.js project. It stores project information and defines scripts, dependencies, and other configuration details.
+---
 
-### Example
+## 1(b) package.json, Dependencies, Development Dependencies, and Lockfile
+
+A Node.js project often relies on packages written by other developers. Package management records which packages the project needs and helps other team members install them.
+
+### What Is package.json?
+
+`package.json` is a configuration file that stores project information, scripts, and dependency requirements.
+
+Example:
 
 ```json
 {
   "name": "cs408-assignment-1",
   "version": "1.0.0",
-  "description": "CS408 Advanced Web Development Assignment 1",
+  "description": "CS-408 Advanced Web Development Assignment 1",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {},
+  "devDependencies": {}
 }
 ```
 
-### Important Fields
+**Important fields:**
 
-* **name:** The name of the project.
-* **version:** The current version of the project.
-* **description:** A short explanation of the project.
-* **main:** The main entry file.
-* **scripts:** Commands that can be executed using npm.
-* **dependencies:** Packages required by the application.
-* **devDependencies:** Packages mainly required during development.
-* **license:** Information about the project's license.
+* `name`: The project name.
+* `version`: The project version.
+* `description`: A brief description of the project.
+* `main`: The main entry file for the package.
+* `scripts`: Commands that can be run using npm.
+* `dependencies`: Packages needed to run the application.
+* `devDependencies`: Packages primarily needed during development.
 
-The exact fields in `package.json` depend on how the project is created and configured.
+The fields shown above are an example. A real project may contain additional configuration.
 
-## 3.5 What Is package-lock.json?
+### What Are Dependencies?
 
-`package-lock.json` records the specific versions of installed packages and their dependency information.
+Dependencies are packages that an application needs to function at runtime.
 
-It helps npm reproduce a consistent dependency installation across different computers.
+For example, an Express-based web server uses Express to handle HTTP requests.
 
-### Difference Between package.json and package-lock.json
-
-| package.json                             | package-lock.json                               |
-| ---------------------------------------- | ----------------------------------------------- |
-| Contains project configuration.          | Records the resolved dependency tree.           |
-| Defines dependency requirements.         | Records specific installed package versions.    |
-| Can contain scripts and project details. | Focuses on dependency installation information. |
-| Is edited by developers and npm.         | Is generally generated and updated by npm.      |
-
-Both files are important in a Node.js project when the project uses npm-managed dependencies.
-
-## 3.6 What Are Browser Developer Tools?
-
-Browser Developer Tools are built-in utilities used to inspect, test, and debug websites.
-
-They are available in browsers such as Google Chrome and Microsoft Edge.
-
-To open Developer Tools, press:
-
-```text
-F12
-```
-
-You can also right-click a web page and select **Inspect**.
-
-### Main Panels
-
-**1. Elements**
-
-Displays the page's HTML structure and allows developers to inspect and temporarily modify HTML and CSS.
-
-**2. Console**
-
-Displays JavaScript errors, warnings, and messages. Developers can also execute JavaScript commands.
-
-**3. Network**
-
-Shows requests made by the browser, including resources, API calls, status codes, and loading times.
-
-**4. Sources**
-
-Helps developers inspect source files and debug JavaScript using breakpoints.
-
-**5. Application**
-
-Displays information such as local storage, session storage, cookies, and service workers.
-
-**6. Performance**
-
-Helps identify performance problems and analyze how a web page behaves while running.
-
-### Benefits of Developer Tools
-
-* Finding JavaScript errors
-* Inspecting HTML and CSS
-* Debugging website behavior
-* Monitoring network requests
-* Checking browser storage
-* Improving website performance
-
-# 4. Question 2: Git and GitHub
-
-## 4.1 What Is Version Control?
-
-Version control is a system for tracking changes made to files over time.
-
-It allows developers to review previous changes, restore earlier versions, and collaborate with other developers.
-
-Without version control, managing multiple versions of a project manually can become difficult.
-
-## 4.2 What Is Git?
-
-Git is a distributed version control system. It records changes to project files and maintains a history of those changes.
-
-Git allows developers to work locally, create branches, compare changes, and combine work from different contributors.
-
-### Advantages of Git
-
-* Tracks file changes.
-* Maintains project history.
-* Supports branches.
-* Helps teams collaborate.
-* Allows previous versions to be recovered.
-* Works without a constant internet connection for local operations.
-
-## 4.3 What Is GitHub?
-
-GitHub is an online platform that hosts Git repositories.
-
-It allows developers to upload their projects, share repositories, review code, and collaborate with other people.
-
-### Difference Between Git and GitHub
-
-| Git                                            | GitHub                                               |
-| ---------------------------------------------- | ---------------------------------------------------- |
-| A version control system.                      | An online repository hosting platform.               |
-| Runs on a local computer.                      | Provides online access to repositories.              |
-| Tracks changes and commits.                    | Hosts repositories and supports collaboration.       |
-| Can work offline for local operations.         | Requires an internet connection for online features. |
-| Is used through commands and compatible tools. | Provides a website and collaboration features.       |
-
-Git and GitHub are related, but they are not the same thing.
-
-## 4.4 What Is a Repository?
-
-A repository, or repo, is a location where a project's files and version history are stored.
-
-A Git repository includes the project files and the history maintained by Git.
-
-Repositories can be local or hosted remotely, such as on GitHub.
-
-## 4.5 Important Git Commands
-
-### Check Git Version
+Install Express with:
 
 ```bash
-git --version
+npm install express
 ```
 
-Displays the installed Git version.
+npm records Express under `dependencies` in `package.json`.
 
-### Initialize a Repository
+### What Are Development Dependencies?
+
+Development dependencies are packages used mainly while writing, testing, formatting, or building the application.
+
+For example, Prettier formats code, while ESLint checks it against configured coding rules.
+
+Install them with:
 
 ```bash
-git init
+npm install --save-dev prettier eslint
 ```
 
-Creates a new Git repository in the current directory if one does not already exist.
+npm records these packages under `devDependencies`.
 
-### Check File Status
+### Runtime Dependency vs. Development Dependency
 
-```bash
-git status
-```
+| Runtime Dependency                                | Development Dependency                                                                             |
+| ------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Required by the application while it runs.        | Primarily used during development or testing.                                                      |
+| Example: Express in an Express server.            | Example: Prettier for code formatting.                                                             |
+| Installed when runtime dependencies are required. | May be omitted from a production-only installation if the application does not need it at runtime. |
 
-Shows modified, untracked, and staged files.
+**Example scenario:**
 
-### Add Files to the Staging Area
+Suppose the team creates a Node.js web server using Express and uses Prettier to format JavaScript files.
 
-```bash
-git add .
-```
+Express is a runtime dependency because the server needs it to handle requests. Prettier is a development dependency because it formats the source code before execution; the deployed server does not need Prettier to handle requests.
 
-Stages eligible changes in the current directory and its subdirectories.
+This distinction avoids treating every development tool as part of the application's runtime requirements.
 
-### Create a Commit
+### What Is a Lockfile?
 
-```bash
-git commit -m "Add assignment files"
-```
+For npm projects, the lockfile is normally named `package-lock.json`.
 
-Records the staged changes in the repository history.
+It records the resolved versions of installed packages and dependency information. It helps npm install a consistent dependency tree on different computers.
 
-### View Commit History
-
-```bash
-git log --oneline
-```
-
-Displays a compact history of commits.
-
-### View the Remote Repository
-
-```bash
-git remote -v
-```
-
-Displays configured remote repository URLs.
-
-### Upload Changes
-
-```bash
-git push
-```
-
-Uploads local commits to the configured remote branch when the repository is correctly configured.
-
-### Download Remote Changes
-
-```bash
-git pull
-```
-
-Fetches and integrates changes from the remote repository into the current branch.
-
-## 4.6 What Is a Commit?
-
-A commit is a recorded snapshot of staged changes in a Git repository.
-
-Each commit has a unique identifier and a message describing the changes.
-
-Example:
-
-```bash
-git add .
-git commit -m "Complete assignment documentation"
-```
-
-A useful commit message should briefly explain what changed.
-
-## 4.7 What Is a Branch?
-
-A branch is an independent line of development within a Git repository.
-
-Branches allow developers to work on new features or changes without directly modifying another branch's work.
+When a team member installs the project dependencies, the lockfile helps reproduce the versions selected for the project.
 
 For example:
 
 ```bash
-git branch
+npm ci
 ```
 
-Displays the local branches.
+This command installs dependencies from the existing npm lockfile and is useful for reproducible installations in automated environments or when setting up a clean working copy. It expects a compatible lockfile and `package.json`.
+
+If the project has no lockfile yet, an initial installation can be performed with:
 
 ```bash
-git switch -c new-feature
+npm install
 ```
 
-Creates and switches to a new branch named `new-feature`.
+This can create or update `package-lock.json`.
 
-## 4.8 What Is .gitignore?
+### How These Files Work Together
 
-`.gitignore` is a text file that tells Git which untracked files or directories to ignore.
+| File or Section     | Main Role                                                         |
+| ------------------- | ----------------------------------------------------------------- |
+| `package.json`      | Defines project metadata, scripts, and dependency requirements.   |
+| `dependencies`      | Lists packages needed by the application at runtime.              |
+| `devDependencies`   | Lists packages mainly used during development.                    |
+| `package-lock.json` | Records resolved dependency versions and dependency-tree details. |
 
-It is commonly used for temporary files, logs, local environment files, and installed dependencies.
+Together, these files make project setup easier and reduce inconsistencies between team members' computers.
 
-### Example
+---
 
-```gitignore
-node_modules/
-.env
-*.log
-.DS_Store
-```
+## 1(c) Create and Run a Basic Node.js Project
 
-Important: `.gitignore` does not automatically remove files that Git is already tracking. Also, sensitive information such as passwords and API keys should never be committed to a public repository.
+The following steps demonstrate how to create a small Node.js project and verify that it runs.
 
-# 5. Practical Work
+### Step 1: Install and Verify Node.js
 
-## 5.1 Project Setup
-
-The project was created and managed using Node.js, npm, VS Code, Git, and GitHub.
-
-### Step 1: Open the Project Folder
-
-Open the assignment folder in Visual Studio Code.
-
-### Step 2: Open the Integrated Terminal
-
-Select **Terminal → New Terminal**.
-
-### Step 3: Check the Installed Tools
+Install a supported Node.js release if it is not already available. Then open the VS Code terminal and run:
 
 ```bash
 node --version
 npm --version
-git --version
 ```
 
-### Step 4: Initialize the npm Project
+**Reason:** These commands verify that the Node.js runtime and npm are available. If the commands are not recognized, check the installation and terminal environment.
+
+### Step 2: Create a Project Folder
+
+In the terminal, run:
+
+```bash
+mkdir node-demo
+cd node-demo
+```
+
+**Reason:** A separate project directory keeps the application's files organized.
+
+If a suitable project folder already exists, use that folder instead.
+
+### Step 3: Initialize the npm Project
+
+Run:
 
 ```bash
 npm init -y
 ```
 
-This creates the default `package.json` file if it does not already exist.
+**Reason:** This command creates a default `package.json` file so npm can manage the project.
 
-## 5.2 Creating a JavaScript File
+### Step 4: Create app.js
 
-Create a file named `app.js` in the project root.
+Create a file named `app.js` in the project directory.
 
-Add the following code:
+Add the following JavaScript code:
 
 ```javascript
-console.log("CS408 Advanced Web Development Assignment 1");
-console.log("Node.js is working successfully!");
+console.log("CS-408 Advanced Web Development");
+console.log("Node.js project is running successfully!");
 ```
 
-### Running the JavaScript File
+**Reason:** `console.log()` prints messages to the terminal, making it a simple way to verify JavaScript execution.
 
-In the VS Code terminal, execute:
+### Step 5: Add a Start Script
+
+Open `package.json` and ensure that it contains a `scripts` section similar to the following:
+
+```json
+"scripts": {
+  "start": "node app.js"
+}
+```
+
+Add the section inside the main JSON object. If a `scripts` section already exists, update it rather than creating a duplicate.
+
+**Reason:** The start script provides a standard command for running the application.
+
+### Step 6: Run the JavaScript File
+
+Execute:
 
 ```bash
 node app.js
 ```
 
-### Expected Output
+Expected output:
 
 ```text
-CS408 Advanced Web Development Assignment 1
-Node.js is working successfully!
+CS-408 Advanced Web Development
+Node.js project is running successfully!
 ```
 
-This practical example demonstrates how Node.js executes a JavaScript file outside the browser.
+### Step 7: Run Through npm
 
-## 5.3 Creating the Assignment Documentation
+Execute:
 
-The assignment documentation can be organized using Markdown.
-
-Markdown is a lightweight formatting language used to create headings, lists, tables, links, and code blocks.
-
-Examples:
-
-```markdown
-# Main Heading
-
-## Subheading
-
-- First point
-- Second point
-
-**Bold text**
-
-`inline code`
+```bash
+npm start
 ```
 
-GitHub automatically renders Markdown files, making them easier to read.
+The same messages should appear.
 
-## 5.4 Practical Git Workflow
+**Reason:** Running `node app.js` verifies direct execution, while `npm start` verifies that the configured start script works.
 
-The following commands demonstrate how to track and upload project changes:
+### Step 8: Check the Project Files
+
+The basic project should contain:
+
+```text
+node-demo/
+├── app.js
+└── package.json
+```
+
+Depending on the installation and configuration, the directory may also contain `package-lock.json` and other files.
+
+### Verification
+
+The project can be considered successfully executed when:
+
+* Node.js and npm commands work.
+* `app.js` executes without errors.
+* The expected messages appear.
+* `npm start` runs the configured script.
+
+These steps provide a minimal, repeatable setup that can be extended into a larger application.
+
+---
+
+## 1(d) Troubleshooting Incorrect Output and Failed Image Requests
+
+Consider a webpage that loads, but displays incorrect output and fails to load an image. These problems should be investigated separately because they may have different causes.
+
+### Problem 1: The Webpage Displays Incorrect Output
+
+**First panel: Console**
+
+The Console displays JavaScript errors, warnings, and developer messages.
+
+Evidence may include:
+
+* `ReferenceError`, indicating that a variable or function is unavailable.
+* `TypeError`, indicating an invalid operation on a value.
+* Messages showing unexpected values.
+* Failed script loading messages.
+
+**Reasoning:** If the webpage displays the wrong result, a JavaScript error or incorrect data may be responsible. Console messages can reveal where execution failed.
+
+**Second panel: Elements**
+
+The Elements panel shows the live HTML structure and applied CSS.
+
+Evidence may include:
+
+* An unexpected text element.
+* Incorrect HTML nesting.
+* A class or ID that does not match the intended element.
+* CSS rules that hide, move, or change the appearance of content.
+
+**Reasoning:** If the expected data exists but appears in the wrong place or is styled incorrectly, inspecting the live DOM and CSS helps identify the problem.
+
+**Third panel: Sources**
+
+The Sources panel allows developers to inspect source files, set breakpoints, and step through supported JavaScript execution.
+
+Evidence may include:
+
+* A variable containing an unexpected value.
+* A function receiving incorrect input.
+* A conditional statement taking the wrong branch.
+* A line where execution fails or behaves unexpectedly.
+
+**Reasoning:** Breakpoints help trace how the program reaches the incorrect result rather than relying only on the final displayed output.
+
+### Problem 2: An Image Request Fails
+
+**First panel: Network**
+
+The Network panel is the main place to investigate a failed image request.
+
+Select the image resource and inspect its URL, status code, request details, response headers, and timing.
+
+Possible evidence includes:
+
+| Evidence                                    | Possible Meaning                                                           |
+| ------------------------------------------- | -------------------------------------------------------------------------- |
+| `404 Not Found`                             | The requested image was not found at that URL.                             |
+| `403 Forbidden`                             | Access to the image may be denied.                                         |
+| `500`-series status                         | The server may have encountered an error.                                  |
+| Failed request with no normal HTTP response | A network, browser, DNS, or other request-level problem may have occurred. |
+| Unexpected response content type            | The server may be returning something other than an image.                 |
+
+A `200 OK` response does not necessarily guarantee that the browser can display the resource correctly. The response content and browser messages should also be inspected.
+
+**Reasoning:** The Network panel provides direct evidence about whether the image request was sent successfully and what response was received.
+
+**Second panel: Console**
+
+The Console may report:
+
+* A failed resource request.
+* A Content Security Policy restriction.
+* A mixed-content warning or block.
+* A cross-origin issue where applicable.
+
+**Reasoning:** The Console helps identify browser security restrictions and other errors that are not obvious from the page itself.
+
+### Recommended Troubleshooting Process
+
+1. Open Developer Tools using `F12`.
+2. Open the Console and record relevant errors.
+3. Open Network and reload the page.
+4. Filter the requests to locate the image.
+5. Inspect the request URL and status.
+6. Check the image path in the HTML or JavaScript.
+7. Use Elements to inspect the rendered page.
+8. Use Sources to debug JavaScript if the incorrect output is caused by application logic.
+9. Correct the underlying problem and reload the page to verify the result.
+
+This process uses evidence from several panels rather than assuming that every visual problem is caused by JavaScript.
+
+---
+
+# Question 2: Git/GitHub Workflow and Troubleshooting
+
+## 2(a) Check, Stage, Commit, Connect, and Push
+
+Assume that a Node.js project already contains `app.js` and `package.json`, Git has been initialized, and an initial commit has been made.
+
+The following workflow shows how to check changes, stage and commit them, connect to GitHub, and publish the `main` branch.
+
+### Step 1: Check Repository Status
 
 ```bash
 git status
-git add .
-git commit -m "Add CS408 assignment work"
-git push
 ```
 
-These commands check the repository status, stage changes, create a commit, and push the commit to the configured remote repository.
+**Purpose:** Shows the current branch and identifies modified, staged, and untracked files.
 
-If the project has not yet been connected to GitHub, the remote repository must be configured before pushing.
-
-# 6. Project Setup and Execution
-
-## 6.1 Requirements
-
-The following tools are used for this assignment:
-
-* Visual Studio Code
-* Node.js
-* npm
-* Git
-* A GitHub account
-* An internet connection for GitHub operations
-
-## 6.2 Verify the Project
-
-Open the terminal in the project directory and run:
-
-```bash
-node --version
-npm --version
-git --version
-```
-
-To execute the example JavaScript file, run:
-
-```bash
-node app.js
-```
-
-To inspect the current Git status, run:
-
-```bash
-git status
-```
-
-If the project contains npm dependencies, use the appropriate npm installation command before running the application.
-
-# 7. Git Workflow
-
-The following workflow summarizes how changes are managed and uploaded to GitHub.
-
-### Step 1: Check Changes
-
-```bash
-git status
-```
+**Reasoning:** Checking status first helps the developer understand which changes will be included in the next commit.
 
 ### Step 2: Stage Changes
 
@@ -600,78 +526,489 @@ git status
 git add .
 ```
 
+**Purpose:** Stages eligible changes in the current directory and its subdirectories.
+
+**Reasoning:** Git commits staged changes. Reviewing `git status` before committing helps avoid including unintended files.
+
 ### Step 3: Commit Changes
 
 ```bash
-git commit -m "Update assignment files"
+git commit -m "Add project updates"
 ```
 
-### Step 4: Push to GitHub
+**Purpose:** Records the staged changes as a commit in the local repository.
+
+**Reasoning:** A commit creates a checkpoint that can be reviewed later. Meaningful messages help team members understand the project history.
+
+If Git reports that there is nothing to commit, check whether the files have been saved and whether any new changes exist.
+
+### Step 4: Connect the Local Repository to GitHub
+
+Create an empty repository on GitHub, then connect it using the repository URL.
+
+Replace the placeholder with the actual URL of the repository:
+
+```bash
+git remote add origin <REPOSITORY_URL>
+```
+
+**Purpose:** Configures a remote named `origin` for the GitHub repository.
+
+**Reasoning:** The remote tells Git where the local repository should send and receive changes.
+
+Check the configured remote:
+
+```bash
+git remote -v
+```
+
+If `origin` already exists, inspect its URL rather than adding the same remote again.
+
+### Step 5: Ensure the Branch Is Named main
+
+```bash
+git branch -M main
+```
+
+**Purpose:** Renames the current branch to `main`.
+
+**Reasoning:** Using a consistent branch name helps align the local workflow with the expected remote branch. Confirm that the current branch is the one you intend to publish.
+
+### Step 6: Push the Main Branch
+
+```bash
+git push -u origin main
+```
+
+**Purpose:** Uploads the local `main` branch to the remote repository and sets its upstream tracking relationship.
+
+**Reasoning:** The upstream relationship makes subsequent pushes and pulls simpler.
+
+**Important:** This is suitable when the local and remote histories can be pushed safely. If Git rejects the push because the remote contains commits not present locally, follow the troubleshooting process in Question 2(d). Do not try to overwrite the remote history blindly.
+
+---
+
+## 2(b) Excluding node_modules and Managing Dependencies
+
+### What Is node_modules?
+
+`node_modules` is the directory where npm normally installs a project's dependencies.
+
+It may contain thousands of files, including packages and their own dependencies. The directory can become very large.
+
+### Why Should node_modules Normally Be Excluded?
+
+The directory should normally be excluded from Git because:
+
+1. It can significantly increase repository size.
+2. Its contents can be recreated by installing the project's dependencies.
+3. It may contain platform-specific or generated files.
+4. Tracking all installed package files creates unnecessary repository changes.
+5. Sharing dependency configuration is generally more maintainable than committing the entire installed directory.
+
+### .gitignore Entry
+
+Create a file named `.gitignore` in the project root and add:
+
+```gitignore
+node_modules/
+.env
+*.log
+```
+
+**Explanation:**
+
+* `node_modules/` ignores the installed dependency directory.
+* `.env` ignores a common local environment configuration file.
+* `*.log` ignores files ending in `.log`.
+
+A `.gitignore` file helps prevent accidental tracking of unwanted files, but it does not automatically remove files that Git already tracks.
+
+Credentials, passwords, tokens, and API keys must never be committed. If a secret has already been exposed, removing it from a later commit may not remove it from the repository's history; the credential should be revoked or rotated as appropriate.
+
+### How package.json and package-lock.json Help
+
+When another developer clones the repository, they should use the project's package configuration to install its dependencies.
+
+For an npm project with a compatible `package-lock.json`, run:
+
+```bash
+npm ci
+```
+
+This installs the dependency versions recorded in the lockfile and is useful for clean, reproducible installations.
+
+If a lockfile does not yet exist, the project may require an initial installation using:
+
+```bash
+npm install
+```
+
+This can create or update the lockfile.
+
+**Role of each file:**
+
+* `package.json` declares the project's dependency requirements and scripts.
+* `package-lock.json` records the resolved dependency versions and dependency-tree information.
+* `node_modules/` contains the locally installed packages and can be recreated.
+
+This arrangement reduces repository size and helps different developers install a consistent set of dependencies.
+
+---
+
+## 2(c) Commit, Branch, Push, Pull, and Clone
+
+These Git terms describe different parts of version control and collaboration.
+
+### Commit
+
+A commit is a saved snapshot of staged changes in the repository history.
+
+Example:
+
+```bash
+git add app.js
+git commit -m "Fix application output"
+```
+
+A commit creates a checkpoint that can be inspected or compared with other commits.
+
+### Branch
+
+A branch is a separate line of development. It allows a developer to make changes without immediately modifying another branch's work.
+
+Create a branch for a feature:
+
+```bash
+git switch -c teammate-feature
+```
+
+The branch can contain commits that are separate from the `main` branch until the work is reviewed and integrated.
+
+### Push
+
+Push uploads local commits to a remote repository.
 
 ```bash
 git push
 ```
 
-### Step 5: Verify the Repository
+This updates the remote branch when the push is accepted.
 
-Open the GitHub repository in a browser and refresh the page. Confirm that the latest files and README content are visible.
+### Pull
 
-Repository:
+Pull fetches changes from a remote repository and integrates them into the current branch.
 
-**[CS408 Assignment 1 — GitHub Repository](https://github.com/naeem86810-cmd/CS408-ASSIGNMENT1)**
+```bash
+git pull
+```
 
-# 8. Common Git Problems and Solutions
+The integration may use a merge or another configured strategy. If changes conflict, Git may require the developer to resolve the conflicts.
 
-## Problem 1: Changes Are Not Visible on GitHub
+### Clone
 
-**Possible cause:** The changes were saved locally but not committed or pushed.
+Clone creates a local copy of a remote repository, including its Git history.
 
-**Solution:**
+```bash
+git clone <REPOSITORY_URL>
+```
+
+The placeholder should be replaced with the actual repository URL.
+
+Cloning is useful when a teammate needs to start working on a repository on another computer.
+
+### Comparison
+
+| Term   | Meaning                                      | Example Use                         |
+| ------ | -------------------------------------------- | ----------------------------------- |
+| Commit | Records staged changes locally.              | Save a completed code fix.          |
+| Branch | Provides a separate line of development.     | Develop a new feature.              |
+| Push   | Uploads local commits to a remote.           | Publish work on GitHub.             |
+| Pull   | Fetches and integrates remote changes.       | Update the local branch.            |
+| Clone  | Creates a local copy of a remote repository. | Set up a project on a new computer. |
+
+### Applying These Concepts to the Team Scenario
+
+Suppose one teammate is developing a feature while another is fixing a bug.
+
+They can work on separate branches and create commits describing their changes. This keeps unfinished work separate from the main branch and makes it easier to review each contribution.
+
+Before integrating the feature, the team can inspect the changes and resolve conflicts if the same lines of code were modified.
+
+A typical workflow is:
+
+```bash
+git switch -c feature-update
+git status
+git add .
+git commit -m "Implement feature update"
+git push -u origin feature-update
+```
+
+The teammate can then open a pull request on GitHub for review and integration.
+
+Branches and commits do not automatically eliminate every conflict, but they make changes easier to isolate, review, and recover.
+
+---
+
+## 2(d) Safely Troubleshooting a Rejected Push
+
+### Scenario
+
+A developer attempts to push local changes, but Git rejects the push because the remote branch contains commits that are missing from the local branch.
+
+This may occur when another collaborator has pushed changes or when the remote repository was initialized with a README or other commit.
+
+### Why Is the Push Rejected?
+
+Git normally prevents a push that would discard commits from the remote branch through a non-fast-forward update.
+
+The rejection protects existing remote work from being overwritten by a local branch that does not contain the remote history.
+
+### Step 1: Inspect the Local Repository
+
+Run:
+
+```bash
+git status
+git branch --show-current
+git remote -v
+```
+
+These commands show the working-tree status, current branch, and configured remote.
+
+**Reasoning:** Confirming the current branch and remote avoids making changes to the wrong repository or branch.
+
+### Step 2: Fetch Remote Changes
+
+Run:
+
+```bash
+git fetch origin
+```
+
+**Purpose:** Downloads information about remote commits without automatically integrating them into the current branch.
+
+**Reasoning:** Fetching allows the developer to inspect the remote changes before deciding how to integrate them.
+
+### Step 3: Compare the Histories
+
+For example, if the relevant remote branch is `main`, run:
+
+```bash
+git log --oneline --graph --decorate --all
+```
+
+This displays the commit history in a compact graph.
+
+**Reasoning:** Reviewing the graph helps determine whether the remote contains new commits and whether the histories have diverged.
+
+### Step 4: Integrate the Remote Changes
+
+If the team uses a merge-based workflow, and the local branch is `main`, run:
+
+```bash
+git switch main
+git merge origin/main
+```
+
+This merges the fetched remote branch into the local `main` branch.
+
+If Git reports conflicts, open the affected files, examine both versions, and resolve the conflicts carefully. Then stage the resolved files and create a merge commit if Git requires one.
+
+Another possible workflow is rebasing local commits on top of the updated remote branch. The team should follow its agreed workflow, particularly if commits have already been shared.
+
+**Reasoning:** Integrating remote work preserves the other developer's changes and creates a history that contains both sets of work.
+
+### Step 5: Push Again
+
+After successfully integrating the remote changes and checking the result, run:
+
+```bash
+git push origin main
+```
+
+This should succeed if the local branch now contains the required remote history and no new conflicting update has occurred.
+
+### Why Should Remote History Not Be Overwritten Blindly?
+
+Using a force push without understanding the situation can replace the remote branch reference and make other collaborators' commits difficult to access through the normal branch history.
+
+This may disrupt teammates, remove expected commits from the branch, and create unnecessary recovery work.
+
+The safer approach is to inspect the remote history, integrate changes, resolve conflicts, and push only after confirming the result.
+
+If a force push is ever genuinely required, it should follow an agreed team procedure and a careful review of the history. It should not be the default response to a rejected push.
+
+---
+
+# Practical Implementation
+
+The following practical example demonstrates the basic Node.js and Git workflow.
+
+## 1. JavaScript Example
+
+Create or use `app.js`:
+
+```javascript
+console.log("CS-408 Advanced Web Development");
+console.log("Assignment 1 practical work");
+console.log("Node.js is running successfully!");
+```
+
+Run the file:
+
+```bash
+node app.js
+```
+
+Expected output:
+
+```text
+CS-408 Advanced Web Development
+Assignment 1 practical work
+Node.js is running successfully!
+```
+
+This confirms that Node.js can execute the JavaScript file and display its output.
+
+## 2. Verify Project Configuration
+
+Check the installed tools:
+
+```bash
+node --version
+npm --version
+git --version
+```
+
+Inspect the repository:
+
+```bash
+git status
+git remote -v
+git log --oneline
+```
+
+These commands help verify the development environment and Git repository configuration.
+
+## 3. Example Git Workflow
+
+After saving the project files:
 
 ```bash
 git status
 git add .
-git commit -m "Update assignment"
+git commit -m "Update CS-408 assignment"
 git push
 ```
 
-If there are no new changes to commit, check whether the correct folder and repository are open.
+Review the status before staging and committing. Ensure that credentials and unnecessary generated files are excluded.
 
-## Problem 2: Git Says There Is Nothing to Commit
+If there are no new changes to commit, Git may report that the working tree is clean. In that case, there is no need to create an empty commit.
 
-**Possible cause:** All changes have already been committed, or the file was not modified or saved.
+---
 
-**Solution:** Save the file and check:
+# Project Structure
 
-```bash
-git status
+A simple repository for this assignment may contain the following files:
+
+```text
+CS408-ASSIGNMENT1/
+├── README.md
+├── app.js
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── theory/
+│   ├── question-1.md
+│   └── question-2.md
+├── practical/
+│   └── practical-work.md
+└── screenshots/
+    ├── project-structure.png
+    └── commit-history.png
 ```
 
-If the working tree is clean, inspect the latest commit and confirm that the correct branch is selected.
+**Note:** This is a suggested structure, not a claim that every listed file already exists. Keep files that are actually present in the repository and create missing files only when needed.
 
-## Problem 3: Push Is Rejected
+The README provides the complete assignment report. The additional theory and practical files can be retained as supporting documents, provided their contents are consistent with the README.
 
-**Possible cause:** The remote branch may contain commits that are missing locally, or the current branch may not have an upstream branch configured.
+---
 
-**Solution:** Read the exact Git error message before changing the repository. If the remote contains new commits, fetch or pull and reconcile the changes before trying again. Avoid using `git push --force` as a routine fix.
+# Screenshots Required
 
-## Problem 4: Git Is Not Recognized
+The assignment instructions specifically require screenshots of the project structure and commit history.
 
-**Possible cause:** Git is not installed, or the terminal cannot find its executable.
+## Screenshot 1: Project Structure
 
-**Solution:** Verify the installation and reopen VS Code after installation. Then run:
+Capture a screenshot in VS Code showing the project folder and its important files, including:
+
+* `README.md`
+* `app.js`
+* `package.json`
+* `.gitignore`
+* Any relevant theory and practical files
+
+Save the actual screenshot as:
+
+`screenshots/project-structure.png`
+
+## Screenshot 2: Commit History
+
+Capture a screenshot showing the Git commit history.
+
+One way to display it is to run this command in the VS Code terminal:
 
 ```bash
-git --version
+git log --oneline --graph --decorate -10
 ```
 
-# 9. Conclusion
+Make sure the terminal output is readable in the screenshot.
 
-This assignment introduced essential tools and concepts used in modern web development. It explained Node.js, npm, project configuration files, browser Developer Tools, Git, GitHub, repositories, commits, branches, and `.gitignore`.
+Save the actual screenshot as:
 
-The practical section demonstrated how to execute a JavaScript file using Node.js, organize assignment documentation using Markdown, and use Git commands to manage and upload project changes.
+`screenshots/commit-history.png`
 
-Keeping the theoretical and practical work in one repository makes the assignment easier to review, maintain, and share.
+**Important:** These are the required screenshot filenames. The screenshots must be captured from your actual project; example text or empty placeholder image files do not count as evidence.
+
+After saving the screenshots, add and push them to GitHub:
+
+```bash
+git add screenshots/
+git commit -m "Add assignment evidence screenshots"
+git push
+```
+
+If the screenshots are saved in another location, adjust the path accordingly.
+
+---
+
+# GitHub Repository
+
+**Repository URL:** https://github.com/naeem86810-cmd/CS408-ASSIGNMENT1
+
+The repository should contain the assignment report, relevant project files, and the required screenshots.
+
+Before sharing the repository with the instructor:
+
+1. Open the repository on GitHub.
+2. Verify that the README displays correctly.
+3. Confirm that the practical code and configuration files are present.
+4. Confirm that the two actual screenshots are uploaded.
+5. Check that no passwords, access tokens, API keys, or other confidential information are exposed.
+
+---
+
+# Conclusion
+
+This assignment explained how to select and configure a consistent JavaScript development environment, manage project dependencies, run a basic Node.js application, and investigate browser problems using Developer Tools.
+
+It also demonstrated how Git and GitHub support version control and collaboration. Commands for checking status, staging changes, committing work, configuring a remote, pushing changes, and troubleshooting rejected pushes were explained with their purposes and reasoning.
+
+Using consistent tooling, dependency configuration, a lockfile, and a safe Git workflow helps team members maintain a reproducible development environment. Reviewing changes and integrating remote commits carefully also reduces the risk of losing another developer's work.
+
+The final submission should include the completed report, relevant practical files, the GitHub repository URL, and the two required screenshots.
 
 ---
 
