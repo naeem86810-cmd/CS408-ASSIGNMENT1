@@ -1,24 +1,63 @@
-# CS-408 Assignment 1: Practical Work
+# Practical Work: Development Environment and Git/GitHub
 
-## 1. Development Environment
+## 1. Introduction
 
-The development environment was prepared using Visual Studio Code, Node.js, npm, Git, and GitHub.
+This practical work demonstrates the setup of a basic Node.js project, execution of a JavaScript program, and management of project files using Git and GitHub.
 
-## 2. Node.js Project
+## 2. Software and Tools
 
-A basic Node.js project was created using the following command:
+The following tools are used:
+
+* Visual Studio Code
+* Node.js
+* npm
+* Git
+* GitHub
+
+## 3. Check Node.js and npm
+
+Open the terminal in Visual Studio Code and run:
+
+```bash
+node -v
+npm -v
+```
+
+These commands display the installed versions of Node.js and npm.
+
+## 4. Initialize the Project
+
+Run the following command inside the project directory:
 
 ```bash
 npm init -y
 ```
 
-The program was executed using:
+This command creates a default `package.json` file containing project information and configuration.
+
+## 5. Create the JavaScript Program
+
+Create a file named `app.js` in the root directory.
+
+Add the following code:
+
+```javascript
+const student = "CS-408 Student";
+
+console.log("Welcome to Node.js!");
+console.log("Course:", student);
+console.log("Project is running successfully.");
+```
+
+## 6. Execute the Program
+
+Run the following command:
 
 ```bash
 node app.js
 ```
 
-### Program Output
+### Expected Output
 
 ```text
 Welcome to Node.js!
@@ -26,31 +65,80 @@ Course: CS-408 Student
 Project is running successfully.
 ```
 
-This confirms that the Node.js program executed successfully.
+The program uses `console.log()` to display messages in the terminal.
 
-## 3. Git and GitHub Workflow
+## 7. Git Commands
 
-The project was managed using Git version control.
+The following commands are useful for managing project changes.
 
-The following commands were used:
+### Check Repository Status
 
 ```bash
 git status
-git add .
-git commit -m "Add assignment files"
-git push origin main
 ```
 
-These commands check repository status, stage changes, create commits, and upload committed changes to GitHub.
+Displays the current status of tracked and untracked files.
 
-## 4. Screenshots
+### Stage Changes
 
-Screenshots demonstrating the Node.js output, Git commit history, GitHub repository, and `.gitignore` configuration will be stored in the `screenshots` folder.
+```bash
+git add .
+```
 
-## 5. GitHub Repository
+Stages changes for the next commit, except files excluded by Git rules.
 
-Repository: https://github.com/naeem86810-cmd/CS408-ASSIGNMENT1
+### Commit Changes
 
-## Conclusion
+```bash
+git commit -m "Update assignment files"
+```
 
-The practical work demonstrates basic Node.js execution and the use of Git and GitHub for version control and project hosting.
+Records staged changes in the local Git history.
+
+### View Commit History
+
+```bash
+git log --oneline
+```
+
+Displays a concise history of commits.
+
+## 8. GitHub Repository
+
+GitHub hosts the project repository online.
+
+The general workflow is:
+
+1. Create or open the GitHub repository.
+2. Connect the local repository to GitHub if it is not already connected.
+3. Stage and commit the required changes.
+4. Push the commits to GitHub.
+
+To check the configured remote:
+
+```bash
+git remote -v
+```
+
+If the remote is already configured correctly, upload your latest commit with:
+
+```bash
+git push
+```
+
+## 9. The .gitignore File
+
+The `.gitignore` file specifies untracked files and directories that Git should ignore.
+
+Example:
+
+```gitignore
+node_modules/
+.env
+```
+
+The `node_modules/` directory contains installed packages, while `.env` files may contain sensitive configuration information.
+
+## 10. Conclusion
+
+This practical work demonstrates how to initialize a Node.js project, execute a JavaScript program, and use Git commands to manage project changes. GitHub provides online hosting for the repository and makes it easier to share and review the completed assignment.
